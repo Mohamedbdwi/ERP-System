@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Tree Account Statement";
+    SelectList accountsList = new SelectList(ViewBag.accountsDropDownList, "Id", "Acc_Name");
+}
+
+<div class="container row">
+    <div class="form-group col-2">
+        <label class="control-label">Date</label>
+        <input id="restrictionDate" type="datetime-local" class="form-control" />
+
+    </div>
+
+    <div class="form-group col-4">
+        <label class="control-label">Customer Account</label>
+        <select id="AccTreeRes_Id" class="form-control" asp-items="accountsList">
+            <option value="0"> select Customer Account</option>
+        </select>
+
+    </div>
+
+    <div class="form-group col-2">
+        <label class="control-label">Money Value</label>
+        <input id="moneyValue" class="form-control" />
+
+    </div>
+
+    <div class="form-group col-4">
+        <label class="control-label">Type</label>
+        <select id="restrictionType" class="form-control">
+            <option value="Debtor">Debtor</option>
+            <option value="Creditor">Creditor</option>
+        </select>
+
+    </div>
+
+    <div class="form-group col-6">
+        <label class="control-label">Statement</label>
+        <input id="restrictionStatement" class="form-control" />
+
+    </div>
+
+    <div class="form-group col-2 mt-4">
+        
+        <a id="restrictinSaving" class="btn btn-purple">Save</a>
+
+    </div>
+
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+        <script src="~/js/customer.js"></script>
+}

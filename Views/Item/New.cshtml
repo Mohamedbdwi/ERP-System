@@ -1,0 +1,48 @@
+﻿@model Small_ERP.Models.Item
+
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New Item</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddNew">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Purchasing_Price" class="control-label">Purchasing Price</label>
+                <input asp-for="Purchasing_Price" class="form-control" />
+                <span asp-validation-for="Purchasing_Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Selling_Price" class="control-label">Selling Price</label>
+                <input asp-for="Selling_Price" class="form-control" />
+                <span asp-validation-for="Selling_Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_Period_Balance" class="control-label">Start Period Balance</label>
+                <input asp-for="Start_Period_Balance" class="form-control" />
+                <span asp-validation-for="Start_Period_Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

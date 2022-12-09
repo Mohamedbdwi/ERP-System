@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Small_ERP.Models.DailyRestrictions>
+
+@{
+    ViewData["Title"] = "DiplayAllDailyRestrictions";
+}
+
+<h1>All Daily Restrictions</h1>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            
+            <th>
+                Number
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Money Amount
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Account
+            </th>
+            <th>
+                Account Tree Name
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money_Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountTree.Acc_Name)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

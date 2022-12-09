@@ -1,0 +1,143 @@
+﻿@model Small_ERP.ViewModels.InvoiceViewModel
+
+@{
+    ViewData["Title"] = "InsertPurchaseBill";
+    SelectList supplierList = new SelectList(ViewBag.SupplierDropDownList, "Id", "Name");
+    SelectList itemList = new SelectList(ViewBag.itemDropDownList, "Id", "Name");
+}
+
+<div class="container row btn-purple text-white vw-100 text-center rounded">
+    <h1> Company Name</h1>
+    <h3>Insert Purchase Bill</h3>
+</div>
+
+<hr />
+<div class="row ">
+    <div class="">
+        <form>
+          <div class="container row">
+            <div class="form-group col-6">
+                <label class="control-label">Number</label>
+                    <input id="billNumber" value="@ViewBag.billNumber" class="form-control" readonly/>
+
+            </div>
+
+            <div class="form-group col-6">
+                <label class="control-label">Date</label>
+                <input id="billDate" type="datetime-local" class="form-control" />
+
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label">Supplier Name</label>
+                    <select id="Supplier_Id" class="form-control" asp-items="supplierList">
+                    <option value="0"> select Supplier</option>
+                </select>
+
+            </div>
+          </div>
+
+            <hr />
+
+            <div class="container row">
+                <div class="form-group col-4">
+                    <label class="control-label">Item Name</label>
+                    <select id="billItem_Name" class="form-control" asp-items="itemList">
+                        <option value="0"> select Item</option>
+                    </select>
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label">Item Price</label>
+                    <input id="billItem_Price" class="form-control" readonly />
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label"></label>
+                    <input id="billQuantity" class="form-control" />
+
+                </div>
+
+                <a class="btn btn-purple col-2 h-25 mt-4" onclick="AddItemToGrid()">Add Item</a>
+
+            </div>
+
+
+            <hr />
+
+            <div>
+                <table id="billTableGrid" class="table table-striped table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                No.
+
+                            </th>
+                            <th>
+                                Item Name
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Delete
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="billItemGrid">
+                    </tbody>
+                </table>
+            </div>
+
+            <hr />
+
+            <div class="container row">
+                <div class="form-group col-3">
+                    <label class="control-label">Total Cost</label>
+                    <input id="billTotal_Cost" class="form-control" readonly />
+
+                </div>
+            </div>
+
+            <div class="container row">
+
+
+                <div class="form-group col-3">
+                    <label class="control-label">Paid</label>
+                    <input id="billPaid" class="form-control" />
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label">Remainder</label>
+                    <input id="billRemainder" class="form-control" readonly />
+
+                </div>
+
+            </div>
+
+
+            <hr />
+            <div class="form-group">
+                <input id="billSaveItem" type="submit" value="Save" class="btn btn-purple" />
+            </div>
+    
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/purchasebill.js"></script>
+
+}

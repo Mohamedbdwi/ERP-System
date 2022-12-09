@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Items Movements";
+    SelectList itemList = new SelectList(ViewBag.itemDropDownList, "Id", "Name");
+}
+
+<h1>Items Movements</h1>
+
+<hr />
+<div class="container row">
+    <div class="form-group col-4">
+        <label class="control-label">Item Name</label>
+        <select id="Item_Id" class="form-control" asp-items="itemList">
+            <option value="0"> select Item</option>
+        </select>
+    </div>
+</div>
+
+<hr />
+<div class="text-danger"></div>
+<div class="container row">
+
+
+    <div class="form-group col-4">
+        <label class="control-label">From:</label>
+        <input id="fromDate" type="date" class="form-control" />
+
+    </div>
+
+    <div class="form-group col-4">
+        <label class="control-label">To:</label>
+        <input id="toDate" type="date" class="form-control" />
+
+    </div>
+
+    <a id="search" class="col-1 mt-4 h-25 btn btn-purple">Search</a>
+</div>
+
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Movement Type</th>
+            <th>Quantity</th>
+            <th>Bill Number</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody id="display_movements">
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/items.js"></script>
+}

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Small_ERP.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customers</h1>
+<p>
+    <a class="btn btn-purple" asp-action="TreeAccountStatement">Account Tree Statements</a>
+</p>
+
+<p>
+    @*<a class="btn btn-purple" asp-action="DisplayAccountStatement">Customer Account Statements</a>*@
+</p>
+
+<p>
+    <a class="btn btn-purple" asp-action="New">New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+                <td>
+                    <a class="btn btn-purple" asp-controller="Customer" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                    <a class="btn btn-purple" asp-controller="Customer" asp-action="Delete" asp-route-Id="@item.Id" onclick="DeleteAlert()">Delete</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+

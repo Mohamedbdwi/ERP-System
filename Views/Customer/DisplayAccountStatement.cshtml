@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Customer Account Statement";
+    SelectList customerList = new SelectList(ViewBag.customerDropDownList, "Id", "Name");
+}
+<h1>Customer Account Statements</h1>
+
+<hr />
+<div class="form-group col-6">
+    <label class="control-label">Customer Name</label>
+    <select id="Customer_Id" class="form-control" asp-items="customerList">
+        <option value="0"> select Customer</option>
+    </select>
+</div>
+
+<hr />
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Paid</th>
+            <th>Remainder Debt</th>
+        </tr>
+    </thead>
+    <tbody id="display_statements">
+    </tbody>
+</table>
+
+<hr />
+<div class="container row">
+    <div class="row col-5">
+        <label class="control-label">Live Pay</label>
+        <input id="livePay" class="form-control" />
+
+    </div>
+
+    <div class="col-2">
+        <a class="btn btn-purple col-5 mt-4" id="pay">Pay</a>
+    </div>
+</div>
+<hr />
+
+<div class="container row">
+    <div class="col-5">
+        <label class="control-label">All Total Debts</label>
+        <input id="allTotalDebts" class="form-control" readonly />
+    </div>
+
+    <div class="col-5">
+        <label class="control-label">All Total Paids</label>
+        <input id="allTotalPaids" class="form-control text-success" readonly />
+    </div>
+
+</div>
+
+<hr />
+
+<div class="container row">
+    <div class="col-5">
+        <label class="control-label">Total Remainder Debts</label>
+        <input id="allTotalRemainder" class="form-control text-danger" readonly />
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/customer.js"></script>
+}

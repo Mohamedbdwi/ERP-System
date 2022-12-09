@@ -1,0 +1,145 @@
+﻿@model Small_ERP.ViewModels.InvoiceViewModel
+
+@{
+    ViewData["Title"] = "InsertInvoice";
+    SelectList customertList = new SelectList(ViewBag.CustomerDropDownList, "Id", "Name");
+    SelectList itemList = new SelectList(ViewBag.itemDropDownList, "Id", "Name");
+}
+<div class="container row btn-purple text-white vw-100 text-center rounded">
+    <h1> Company Name</h1>
+    <h3>Insert Invoice</h3>
+</div>
+
+
+
+<hr />
+<div class="row ">
+    <div class="">
+        <form id="form">
+            <div class="text-danger"></div>
+            <div class="container row">
+                <div class="form-group col-6">
+                    <label class="control-label">Number</label>
+                    <input id="Number" value="@ViewBag.invoiceNumber" class="form-control" readonly/>
+
+                </div>
+
+                <div class="form-group col-6">
+                    <label class="control-label">Date</label>
+                    <input id="Date" type="datetime-local" class="form-control" />
+
+                </div>
+
+                <div class="form-group col-12">
+                    <label class="control-label">Customer Name</label>
+                    <select id="Customer_Id" class="form-control" asp-items="customertList">
+                        <option value="0"> select Customer</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="container row">
+                <div class="form-group col-4">
+                    <label class="control-label">Item Name</label>
+                    <select id="Item_Name" class="form-control" asp-items="itemList">
+                        <option value="0"> select Item</option>
+                    </select>
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label">Item Price</label>
+                    <input id="Item_Price" class="form-control" readonly />
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label"></label>
+                    <input id="Quantity" class="form-control" />
+                    <span id="quantity-warning" class="text-danger"></span>
+                </div>
+
+                <a id="adding-btn" class="btn btn-purple col-2 h-25 mt-4">Add Item</a>
+
+            </div>
+
+            <hr />
+
+            <div>
+                <table id="tableGrid" class="table table-striped table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                No.
+
+                            </th>
+                            <th>
+                                Item Name
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Delete
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="itemGrid">
+                    </tbody>
+                </table>
+            </div>
+
+            <hr />
+
+            <div class="container row">
+                <div class="form-group col-3">
+                    <label class="control-label">Total Cost</label>
+                    <input id="Total_Cost" class="form-control" readonly />
+
+                </div>
+            </div>
+
+            <div class="container row">
+
+
+                <div class="form-group col-3">
+                    <label class="control-label">Paid</label>
+                    <input id="Paid" class="form-control" />
+
+                </div>
+                <div class="form-group col-3">
+                    <label class="control-label">Remainder</label>
+                    <input id="Remainder" class="form-control" readonly />
+
+                </div>
+
+            </div>
+
+            <hr />
+            <div class="form-group">
+                <input id="saveItem" type="submit" value="Save" class="btn btn-purple" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/invoice.js"></script>
+}

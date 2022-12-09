@@ -1,0 +1,82 @@
+﻿@*<div class="container">
+    <div class="row">
+        <a class="btn btn-purple mb-1 col-5 mx-auto" asp-controller="AccountTree" asp-action="DiplayAllAccounts">Clients Accounts</a>
+    </div>
+    <div class="row">
+        <a class="btn btn-purple mb-1 col-5 mx-auto" asp-controller="AccountTree" asp-action="DiplayAllDailyRestrictions">Daily Restrictions</a>
+    </div>
+    <div class="row">
+        <a class="btn btn-purple mb-1 col-5 mx-auto" asp-controller="AccountTree" asp-action="DiplayAllSafes">Safes</a>
+    </div>
+</div>*@
+<link href="~/css/accounttree.css" rel="stylesheet" />
+
+<div class="container" style="margin-top:30px;">
+    <div class="row">
+        <div class="col-md-4">
+            <ul id="tree1">
+                
+                <li>
+                    <a href="#" class="btn">Account Tree</a>
+
+                    <ul>
+                        
+                        <li>
+                            <a class="btn">ِAssets</a>
+                            <ul>
+                                <li>
+                                    <a class="btn">Rolling Assets</a>
+                                    <ul>
+                                        <li>
+                                            <a id="getCustomers" class="btn">Customers</a>
+                                            <ul id="viewCustomers">
+                                            </ul>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a class="btn">Const Assets</a>
+                                    <ul>
+                                        <li>Test1</li>
+                                        <li>Test2</li>
+                                        <li>Test3</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="btn">ِDisounts</a>
+                            <ul>
+                                <li>
+                                    <a id="getSuppliers" class="btn">Suppliers</a>
+                                    <ul id="viewSuppliers">
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+     </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/treeview.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+}

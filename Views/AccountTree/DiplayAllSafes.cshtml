@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Small_ERP.Models.Safes>
+
+@{
+    ViewData["Title"] = "DiplayAllSafes";
+}
+
+<h1>All Safes</h1>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            
+            <th>
+                Date
+            </th>
+            <th>
+                Money Amount
+            </th>
+            <th>
+                Account Name
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money_Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountTree.Acc_Name)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

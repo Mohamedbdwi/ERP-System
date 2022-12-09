@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background: #EFEFEF;
+    margin-bottom: 60px;
+    font-family: 'Abel', sans-serif;
+}
+
+.navbar-bg {
+    background: #4A148C;
+}
+
+.purple-bg {
+    background: #B39DDB;
+}
+
+.btn-purple {
+    background: #9C27B0;
+    color: white;
+    font: bold;
+}

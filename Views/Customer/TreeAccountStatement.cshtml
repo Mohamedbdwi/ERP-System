@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Tree Account Statement";
+    SelectList accountsList = new SelectList(ViewBag.accountsDropDownList, "Id", "Acc_Name");
+}
+<h1>Tree Account Statement</h1>
+
+<a class="btn btn-purple" asp-action="AddDailyRestriction">Add Daily Restriction</a>
+<hr />
+<div class="form-group col-6">
+    <label class="control-label">Customer Account</label>
+    <select id="AccTree_Id" class="form-control" asp-items="accountsList">
+        <option value="0"> select Customer Account</option>
+    </select>
+
+</div>
+
+<hr />
+<div class="text-danger"></div>
+<div class="container row">
+
+
+    <div class="form-group col-4">
+        <label class="control-label">From:</label>
+        <input id="fromDate" type="date" class="form-control" />
+
+    </div>
+
+    <div class="form-group col-4">
+        <label class="control-label">To:</label>
+        <input id="toDate" type="date" class="form-control" />
+
+    </div>
+
+    <a id="search" class="col-1 mt-4 h-25 btn btn-purple">Search</a>
+</div>
+
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Number</th>
+            <th>Creditor</th>
+            <th>Debtor</th>
+            <th>Total Balance</th>
+            <th>Statement</th>
+        </tr>
+    </thead>
+    <tbody id="display_accounts">
+    </tbody>
+</table>
+
+<div class="form-group col-2">
+    <label>Creditor</label>
+    <input id="creditor" class="form-control" readonly />
+</div>
+
+<div class="form-group col-2">
+    <label>Debtor</label>
+    <input id="debtor" class="form-control" readonly />
+</div>
+
+<div class="form-group col-2">
+    <label>End of Period Balance</label>
+    <input id="endBalance" class="form-control" readonly />
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/customer.js"></script>
+}
